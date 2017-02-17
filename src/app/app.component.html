@@ -1,3 +1,6 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container">
+  <div *ngIf="!isAdalConfigured" class="alert alert-warning">
+    You need to configure your Azure AD client. Edit file <span class="code">../environments/environment.ts</span>
+  </div>
+  <router-outlet></router-outlet>
+</div>
