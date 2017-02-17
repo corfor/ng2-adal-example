@@ -1,27 +1,37 @@
 # Ng2AdalExample
 
+This is an Angular2 single-page application to demonstrate how to use <a href="https://github.com/alenny/angular2-adal">angular2-adal</a> to enable single-sign-on authentication against Microsoft Windows Azure AD.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-beta.32.3.
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Setup and run the example 
 
-## Code scaffolding
+1. Create an Azure AD on Azure Portal.
+2. Create or add some users to the AD.
+3. Add an application ('my organization is developing') to the AD with the properties as the below:
+   - Name: any
+   - Type: Web Application and/or Web API
+   - Sign-on URL: http://localhost:4200/
+   - App ID URL: http://myapp/localhost-4200
+4. When creating your app successfully, go to the 'Configure' page of your app, make sure 'User assignement required to access app' is 'NO'.
+5. Copy 'Client ID' (a GUID) on the 'Configure' page and remember it.
+6. Clone this repository to your local machine.
+7. Go to the 'environments' directory and edit `environment.ts` replacing the 'tenant' value by your AD name (should be 
+   a complete domain name, e.g. myad.onmicrosoft.com); replacing the 'clientId' value by your app's client ID.
+8. Run 'npm install'.
+9. Run 'npm start' and wait for the 'welcome' page to pop up.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+### How example works like
 
-## Build
+1. First you will see the 'welcome' page which does not require any user identity.
+<img src="https://github.com/alenny/angular2-adal-example/blob/master/pics/welcome.png?raw=true"></img>
+2. If you click 'login', you will be redirected to the Azure AD login page.
+<img src="https://github.com/alenny/angular2-adal-example/blob/master/pics/login.png?raw=true"></img>
+3. When you login successfully, you will be redirected back to the 'home' page which requires a valid user identity.
+<img src="https://github.com/alenny/angular2-adal-example/blob/master/pics/home.png?raw=true"></img>
+4. If you click 'logout', you will be redirected to the Azure AD logout page, and then redirected back to the 'welcome' page automatically after several seconds.
+<img src="https://github.com/alenny/angular2-adal-example/blob/master/pics/signout.png?raw=true"></img>
+5. Note if you try to access the 'home' page without a valid identity, you will be redirected to the 'welcome' page.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

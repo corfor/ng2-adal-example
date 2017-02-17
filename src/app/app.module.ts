@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { AdalModule } from 'ng2-adal/core';
 import { RouterModule }   from '@angular/router';
+import { AdalModule } from 'ng2-adal/core';
 
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -37,7 +37,6 @@ import { ProtectedDirective } from './protected.directive';
       }
 
     ]),
-
     AdalModule
   ],
   providers: [],
